@@ -18,16 +18,16 @@ public class Garagem implements RegistrarAlugueis{
 	}
 	
 	public void criarVetorCarros() {
-		carros [0] = new Carro ("Chevrolet", "Onix", "2024", "Vermelho", 100, "gasolina", true,1);
-		carros [1] = new Carro ("Volkswagen", "Polo Track", "2024", "Preto", 100, "gasolina", true,1);
-		carros [2] = new Carro ("Citroen", "C3", "2024", "Branco", 100, "gasolina", true,1);
-		carros [3] = new Carro ("Hyundai", "HB20", "2024", "Prata", 100, "gasolina", true,1);
-		carros [4] = new Carro ("Renault", "Stepway", "2024", "Chumbo", 100, "gasolina", true,1);
-		carros [5] = new Carro ("Fiat", "Argo", "2024", "Azul - Marinho", 100, "gasolina", true,1);
-		carros [6] = new Carro ("Peugeot", "208", "2024", "Vermelho", 100, "gasolina", true,1);
-		carros [7] = new Carro ("Fiat", "Cronos", "2024", "Prata", 100, "gasolina", true,1);
-		carros [8] = new Carro ("Seres", "3", "2024", "Vermelho", 100, "eletrico", true,1);
-		carros [9] = new Carro ("Fiat", "MOBI", "2024", "Vermelho", 100, "gasolina", true,1);
+		carros [0] = new Carro ("Chevrolet", "Onix", "2024", "Vermelho", "gasolina", true,210);
+		carros [1] = new Carro ("Volkswagen", "Polo Track", "2024", "Preto", "gasolina", true,200);
+		carros [2] = new Carro ("Citroen", "C3", "2024", "Branco", "gasolina", true,300);
+		carros [3] = new Carro ("Hyundai", "HB20", "2024", "Prata", "gasolina", true,350);
+		carros [4] = new Carro ("Renault", "Stepway", "2024", "Chumbo", "gasolina", true,50);
+		carros [5] = new Carro ("Fiat", "Argo", "2024", "Azul - Marinho", "gasolina", true,100);
+		carros [6] = new Carro ("Peugeot", "208", "2024", "Vermelho", "gasolina", true,150);
+		carros [7] = new Carro ("Fiat", "Cronos", "2024", "Prata", "gasolina", true,200);
+		carros [8] = new Carro ("Seres", "3", "2024", "Vermelho", "eletrico", true,450);
+		carros [9] = new Carro ("Fiat", "MOBI", "2024", "Vermelho", "gasolina", true,100);
 		
 	}
 	
@@ -41,6 +41,16 @@ public class Garagem implements RegistrarAlugueis{
 	    
 	    System.out.println("Digite a marca do carro desejado:");
 	    String marca = sc.nextLine();
+	    boolean marcaExiste = false;
+	    
+	    System.out.println("Carros disponiveis dessa marca: \n\n");
+	    for (Carro i : carros) {
+	    	if(i.isDisponivel() && i.getMarca().equalsIgnoreCase(marca)) {
+	    		marcaExiste = true;
+	    		i.mostrarDados();
+	    	}
+	    }
+	    if (marcaExiste) {
 	    System.out.println("Digite o modelo do carro desejado:");
 	    String modelo = sc.nextLine();
 
@@ -58,7 +68,12 @@ public class Garagem implements RegistrarAlugueis{
 	    }
 
 	    if (!carroEncontrado) {
-	        System.out.println("Carro não disponível na garagem.");
+	        System.out.println("Modelo não disponível na garagem. \n");
+	    }
+	    }
+	    
+	    else {
+	    	System.out.println("Não temos carros disponiveis dessa marca! \n");
 	    }
 
 	}

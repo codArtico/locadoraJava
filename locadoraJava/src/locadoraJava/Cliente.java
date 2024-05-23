@@ -113,7 +113,6 @@ public class Cliente implements Login {
 	}
 	
 	public static Cliente logar(Cliente[] vetorClientes, int contClientes) {
-		sc.nextLine();
 		System.out.println("Digite seu email: ");
 		String email = sc.nextLine();
 		boolean encontrado = false;
@@ -138,7 +137,6 @@ public class Cliente implements Login {
 	}
 	
 	public void alterarSenha () {
-		sc.nextLine();
 		System.out.print("Digite a senha antiga: ");
 		String senha = sc.nextLine();
 		if (this.senha.equals(senha)) {
