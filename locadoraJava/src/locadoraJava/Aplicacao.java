@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class Aplicacao extends Menus{
 	
-	public static int quantCarros = 10;
+	public static final int quantCarros = 10;
 			
-	public static Cliente[] vetorClientes = new Cliente[20];
+	public static final Cliente[] vetorClientes = new Cliente[20];
 	
 	public static void main(String[] args) {
 		int contClientes = 0;
@@ -16,6 +16,7 @@ public class Aplicacao extends Menus{
 		Scanner sc = new Scanner (System.in);
 		int opcao = 0;
 		
+		telaInicial();
 		menuInicial(opcao,vetorClientes,sc,contClientes,garagem);
 	}
 }

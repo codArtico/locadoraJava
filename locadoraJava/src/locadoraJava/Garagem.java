@@ -57,7 +57,7 @@ public class Garagem implements RegistrarAlugueis{
 	    
 	    boolean carroEncontrado = false;
 	    for (Carro carro : carros) {
-	        if (carro.isDisponivel() && carro.getMarca().equalsIgnoreCase(marca) && carro.getModelo().equalsIgnoreCase(modelo)) {
+	        if (carro.isDisponivel() && carro.getMarca().equalsIgnoreCase(marca) && carro.getModelo().equalsIgnoreCase(modelo) && !cliente.isPossuiAluguel()) {
 	            carro.setDisponivel(false);
 	            System.out.println("Carro alugado com sucesso para o cliente " + cliente.getNome());
 	            carroEncontrado = true;
@@ -69,6 +69,10 @@ public class Garagem implements RegistrarAlugueis{
 
 	    if (!carroEncontrado) {
 	        System.out.println("Modelo não disponível na garagem. \n");
+	    }
+	    
+	    else if (cliente.isPossuiAluguel()) {
+	    	System.out.println("Você já possui um aluguel. \n");
 	    }
 	    }
 	    

@@ -76,6 +76,10 @@ public class Cliente implements Login {
 
 	public void mostrarDados() {
 		String possuiCarro = "";
+		String senhaEsc = "";
+			for (int i = 0; i<senha.length();i++) {
+				senhaEsc = senhaEsc + "*";
+			}
 		
 		if (possuiAluguel) {
 			possuiCarro = "Sim!";
@@ -85,7 +89,7 @@ public class Cliente implements Login {
 		}
 		
 		System.out.println("Nome: " + this.nome + "\nCpf: " + cpf + "\nEndereco: " + endereco + "\nTelefone: " + telefone + "\nPossui Carro Alugado?: "
-				+ possuiCarro + "\n");
+				+ possuiCarro + "\n" + "Email: " + email + "\n" + "Senha: " + senhaEsc);
 	}
 	
 	public String getEmail() {

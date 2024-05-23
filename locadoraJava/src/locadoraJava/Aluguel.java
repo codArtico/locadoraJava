@@ -54,7 +54,7 @@ public abstract class Aluguel {
 	}
 	
 	public long calcularDias () {
-		long diferencaEmDias = ChronoUnit.DAYS.between(dataIni.getData(), dataFim.getData());
+		long diferencaEmDias = Math.abs(ChronoUnit.DAYS.between(dataIni.getData(), dataFim.getData()));
 		return diferencaEmDias;
 	}
 	
