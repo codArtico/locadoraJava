@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Menus {
 	
+	public static Scanner sc = new Scanner (System.in);
+	
 	public static void telaInicial() {
 		
 		System.out.println(".-----------------. .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  ");
@@ -17,9 +19,10 @@ public class Menus {
 		System.out.println("| |              | || |              | || |              | || |              | || |              | || |              | |");
 		System.out.println("| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |");
 		System.out.println(" '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' ");
-
+		System.out.println("");
 	}
-	public static void menuInicial(int opcao, Cliente[] vetorClientes, Scanner sc, int contClientes, Garagem garagem) {
+	
+	public static void menuInicial(int opcao, Cliente[] vetorClientes, int contClientes, Garagem garagem) {
 	do {
 		System.out.println("Seja bem vindo a nossa Locadora de Carros");
 		System.out.println("[1] - Cadastrar novo usuário \n[2] - Fazer Login");
@@ -29,14 +32,14 @@ public class Menus {
 	
 		switch (opcao) {
 		case 1:
-			vetorClientes = cadastrarUsuario(vetorClientes, sc, contClientes);
+			vetorClientes = cadastrarUsuario(vetorClientes, contClientes);
 			contClientes++;
 			break;
 		case 2:
 			Cliente clienteLogado = Cliente.logar(vetorClientes,contClientes);
 			if(clienteLogado != null) {
 				while(clienteLogado.isLogado()) {
-			menuPrincipal(clienteLogado,garagem,sc);
+			menuPrincipal(clienteLogado,garagem);
 				}
 			}
 			break;
@@ -46,13 +49,14 @@ public class Menus {
 		} while (opcao>0 && opcao<3);
 	}
 	
-	public static void menuPrincipal(Cliente clienteLogado, Garagem garagem, Scanner sc) {
+	public static void menuPrincipal(Cliente clienteLogado, Garagem garagem) {
 		
 		int escolha;
 		
 		do {
-		System.out.println("Seja bem vindo a Locadora de Carros!");
-		System.out.println("Digite a opção que deseja: \n \n[1] - Ver carros disponiveis \n[2] - Alugar Carro \n[3] - Devolver Carro \n[4] - Alterar senha \n[5] - Mostrar dados do usuário");
+		System.out.println("Seja bem vindo " + clienteLogado.getNome() +", a nossa Locadora de Carros!");
+		System.out.println("\n \n[1] - Ver carros disponiveis \n[2] - Alugar Carro \n[3] - Devolver Carro \n[4] - Alterar senha \n[5] - Mostrar dados do usuário");
+		System.out.print("Digite a opção que deseja: ");
 		escolha = sc.nextInt();
 		
 		switch(escolha) {
@@ -78,21 +82,27 @@ public class Menus {
 		clienteLogado.deslogar();
 	}
 	
-	private static Cliente[] cadastrarUsuario(Cliente[] vetorClientes, Scanner sc, int contClientes) {
-			sc.nextLine();
+	private static Cliente[] cadastrarUsuario(Cliente[] vetorClientes, int contClientes) {
+			System.out.println("");
 			if(contClientes<vetorClientes.length) {
-				System.out.println("Digite seu Nome: ");
+				System.out.print("Digite seu Nome: ");
 				String nome = sc.nextLine();
-				System.out.println("Digite seu CPF: ");
+				
+				System.out.print("Digite seu CPF: ");
 				String cpf = sc.nextLine();
-				System.out.println("Digite seu Endereço: ");
+				
+				System.out.print("Digite seu Endereço: ");
 				String end = sc.nextLine();
-				System.out.println("Digite seu Telefone: ");
+				
+				System.out.print("Digite seu Telefone: ");
 				String tel = sc.nextLine();
-				System.out.println("Digite seu Email: ");
+				
+				System.out.print("Digite seu Email: ");
 				String email = sc.nextLine();
-				System.out.println("Digite seu Senha: ");
+				
+				System.out.print("Digite seu Senha: ");
 				String senha = sc.nextLine();
+				
 				vetorClientes [contClientes] = new Cliente (nome,cpf,end,tel,email,senha);
 			}
 			else {

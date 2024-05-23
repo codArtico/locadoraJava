@@ -33,13 +33,11 @@ public class Garagem implements RegistrarAlugueis{
 	
 	@Override
 	public void alugarCarro(Cliente cliente, Scanner sc) {
-		System.out.println("Pressione enter para continuar: ");
-		sc.nextLine();
 		System.out.println("Carros disponíveis para aluguel:");
 	    mostrarCarros();
 
 	    
-	    System.out.println("Digite a marca do carro desejado:");
+	    System.out.print("Digite a marca do carro desejado:");
 	    String marca = sc.nextLine();
 	    boolean marcaExiste = false;
 	    
@@ -51,7 +49,7 @@ public class Garagem implements RegistrarAlugueis{
 	    	}
 	    }
 	    if (marcaExiste) {
-	    System.out.println("Digite o modelo do carro desejado:");
+	    System.out.print("Digite o modelo do carro desejado:");
 	    String modelo = sc.nextLine();
 
 	    
@@ -59,11 +57,11 @@ public class Garagem implements RegistrarAlugueis{
 	    for (Carro carro : carros) {
 	        if (carro.isDisponivel() && carro.getMarca().equalsIgnoreCase(marca) && carro.getModelo().equalsIgnoreCase(modelo) && !cliente.isPossuiAluguel()) {
 	            carro.setDisponivel(false);
-	            System.out.println("Carro alugado com sucesso para o cliente " + cliente.getNome());
 	            carroEncontrado = true;
 	            cliente.setCarroAlugado(carro);
 	            cliente.setPossuiAluguel(true);
 	            carro.setDataIni(Carro.coletarData());
+	            System.out.println("Carro alugado com sucesso para  " + cliente.getNome() + "\n");
 	        }
 	    }
 
@@ -71,9 +69,6 @@ public class Garagem implements RegistrarAlugueis{
 	        System.out.println("Modelo não disponível na garagem. \n");
 	    }
 	    
-	    else if (cliente.isPossuiAluguel()) {
-	    	System.out.println("Você já possui um aluguel. \n");
-	    }
 	    }
 	    
 	    else {
@@ -88,18 +83,20 @@ public class Garagem implements RegistrarAlugueis{
 		for (Carro carro : carros) {
 			if (cliente.getCarroAlugado().equals(carro)) {
 				carro.setDisponivel(true);
-				cliente.setCarroAlugado(null);
-				cliente.setPossuiAluguel(false);
 				carro.setDataFim(Carro.coletarData());
-				double valorAluguel = carro.calcularAluguel();
-				System.out.println("Valor do aluguel: " + valorAluguel);
+				
 			}
+			
 		}
+		cliente.gerarFatura();
+		cliente.setCarroAlugado(null);
+		cliente.setPossuiAluguel(false);
+
 		}
  }
-
 	
 	public void mostrarCarros() {
+		System.out.println("");
 		int i = 0;
 		
 		while(i<carros.length) {

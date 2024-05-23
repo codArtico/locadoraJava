@@ -26,6 +26,7 @@ public class Cliente implements Login {
 	}
 	
 	public static Scanner sc = new Scanner (System.in);
+	
 	public String getNome() {
 		return nome;
 	}
@@ -75,6 +76,8 @@ public class Cliente implements Login {
 	}
 
 	public void mostrarDados() {
+		System.out.println("");
+		System.out.println("Dados do usuário: ");
 		String possuiCarro = "";
 		String senhaEsc = "";
 			for (int i = 0; i<senha.length();i++) {
@@ -88,8 +91,8 @@ public class Cliente implements Login {
 			possuiCarro = "Não!";
 		}
 		
-		System.out.println("Nome: " + this.nome + "\nCpf: " + cpf + "\nEndereco: " + endereco + "\nTelefone: " + telefone + "\nPossui Carro Alugado?: "
-				+ possuiCarro + "\n" + "Email: " + email + "\n" + "Senha: " + senhaEsc);
+		System.out.println("\n" + "Nome: " + this.nome + "\nCpf: " + cpf + "\nEndereco: " + endereco + "\nTelefone: " + telefone + "\nPossui Carro Alugado?: "
+				+ possuiCarro + "\n" + "Email: " + email + "\n" + "Senha: " + senhaEsc + "\n");
 	}
 	
 	public String getEmail() {
@@ -117,13 +120,13 @@ public class Cliente implements Login {
 	}
 	
 	public static Cliente logar(Cliente[] vetorClientes, int contClientes) {
-		System.out.println("Digite seu email: ");
+		System.out.print("Digite seu email: ");
 		String email = sc.nextLine();
 		boolean encontrado = false;
 		for (int i = 0; i<contClientes; i++) {
 			if (email.equals(vetorClientes[i].getEmail())) {
 				encontrado = true;
-				System.out.println("Digite sua senha");
+				System.out.print("Digite sua senha");
 				String senha = sc.nextLine();
 				if (senha.equals(vetorClientes[i].getSenha())) {
 					vetorClientes[i].setLogado(true);
@@ -152,10 +155,23 @@ public class Cliente implements Login {
 			else {
 				System.out.println("Sua nova senha não pode ser igual a antiga!");
 			}
+			System.out.println("");
 		}
 		else {
 			System.out.println("Senha incorreta.");
 		}
+	}
+	
+	public void gerarFatura() {
+		System.out.println(" \n\n• NowCar - Solução imediata para um passeio sem complicações • \n");
+		System.out.println("Fatura:");
+		System.out.println("Nome do Cliente: " + nome);
+		System.out.println("Carro alugado: " + carroAlugado.getMarca() + " " + carroAlugado.getModelo() + " " + carroAlugado.getAno());
+		System.out.println("Data da retirada: " + carroAlugado.getDataIni());
+		System.out.println("Data da devolução: " + carroAlugado.getDataFim());
+		System.out.println("Valor da diaria: " + carroAlugado.getDiaria() + "\n");
+		System.out.println("Valor total da fatura: " + carroAlugado.calcularAluguel() + "\n");
+		System.out.println("Volte sempre! \n");
 	}
 
 	@Override
