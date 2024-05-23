@@ -24,7 +24,8 @@ public class Cliente implements Login {
 		this.email = email;
 		this.senha = senha;
 	}
-
+	
+	public static Scanner sc = new Scanner (System.in);
 	public String getNome() {
 		return nome;
 	}
@@ -111,7 +112,7 @@ public class Cliente implements Login {
 		this.logado = logado;
 	}
 	
-	public static Cliente logar(Scanner sc, Cliente[] vetorClientes, int contClientes) {
+	public static Cliente logar(Cliente[] vetorClientes, int contClientes) {
 		sc.nextLine();
 		System.out.println("Digite seu email: ");
 		String email = sc.nextLine();
@@ -134,6 +135,25 @@ public class Cliente implements Login {
 			System.out.println("Email não encontrado");
 		}
 		return null;
+	}
+	
+	public void alterarSenha () {
+		sc.nextLine();
+		System.out.print("Digite a senha antiga: ");
+		String senha = sc.nextLine();
+		if (this.senha.equals(senha)) {
+			System.out.println("Digite a nova senha: ");
+			String nova = sc.nextLine();
+			if(nova!=senha) {
+				setSenha(nova);
+			}
+			else {
+				System.out.println("Sua nova senha não pode ser igual a antiga!");
+			}
+		}
+		else {
+			System.out.println("Senha incorreta.");
+		}
 	}
 
 	@Override

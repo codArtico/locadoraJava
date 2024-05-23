@@ -18,16 +18,16 @@ public class Garagem implements RegistrarAlugueis{
 	}
 	
 	public void criarVetorCarros() {
-		carros [0] = new Carro ("Chevrolet", "Onix", "2024", "Vermelho", 100, "gasolina", true);
-		carros [1] = new Carro ("Volkswagen", "Polo Track", "2024", "Preto", 100, "gasolina", true);
-		carros [2] = new Carro ("Citroen", "C3", "2024", "Branco", 100, "gasolina", true);
-		carros [3] = new Carro ("Hyundai", "HB20", "2024", "Prata", 100, "gasolina", true);
-		carros [4] = new Carro ("Renault", "Stepway", "2024", "Chumbo", 100, "gasolina", true);
-		carros [5] = new Carro ("Fiat", "Argo", "2024", "Azul - Marinho", 100, "gasolina", true);
-		carros [6] = new Carro ("Peugeot", "208", "2024", "Vermelho", 100, "gasolina", true);
-		carros [7] = new Carro ("Fiat", "Cronos", "2024", "Prata", 100, "gasolina", true);
-		carros [8] = new Carro ("Seres", "3", "2024", "Vermelho", 100, "eletrico", true);
-		carros [9] = new Carro ("Fiat", "MOBI", "2024", "Vermelho", 100, "gasolina", true);
+		carros [0] = new Carro ("Chevrolet", "Onix", "2024", "Vermelho", 100, "gasolina", true,1);
+		carros [1] = new Carro ("Volkswagen", "Polo Track", "2024", "Preto", 100, "gasolina", true,1);
+		carros [2] = new Carro ("Citroen", "C3", "2024", "Branco", 100, "gasolina", true,1);
+		carros [3] = new Carro ("Hyundai", "HB20", "2024", "Prata", 100, "gasolina", true,1);
+		carros [4] = new Carro ("Renault", "Stepway", "2024", "Chumbo", 100, "gasolina", true,1);
+		carros [5] = new Carro ("Fiat", "Argo", "2024", "Azul - Marinho", 100, "gasolina", true,1);
+		carros [6] = new Carro ("Peugeot", "208", "2024", "Vermelho", 100, "gasolina", true,1);
+		carros [7] = new Carro ("Fiat", "Cronos", "2024", "Prata", 100, "gasolina", true,1);
+		carros [8] = new Carro ("Seres", "3", "2024", "Vermelho", 100, "eletrico", true,1);
+		carros [9] = new Carro ("Fiat", "MOBI", "2024", "Vermelho", 100, "gasolina", true,1);
 		
 	}
 	
@@ -53,6 +53,7 @@ public class Garagem implements RegistrarAlugueis{
 	            carroEncontrado = true;
 	            cliente.setCarroAlugado(carro);
 	            cliente.setPossuiAluguel(true);
+	            carro.setDataIni(Carro.coletarData());
 	        }
 	    }
 
@@ -70,6 +71,9 @@ public class Garagem implements RegistrarAlugueis{
 				carro.setDisponivel(true);
 				cliente.setCarroAlugado(null);
 				cliente.setPossuiAluguel(false);
+				carro.setDataFim(Carro.coletarData());
+				double valorAluguel = carro.calcularAluguel();
+				System.out.println("Valor do aluguel: " + valorAluguel);
 			}
 		}
 		}

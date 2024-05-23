@@ -18,7 +18,7 @@ public class Menus {
 			contClientes++;
 			break;
 		case 2:
-			Cliente clienteLogado = Cliente.logar(sc,vetorClientes,contClientes);
+			Cliente clienteLogado = Cliente.logar(vetorClientes,contClientes);
 			if(clienteLogado != null) {
 				while(clienteLogado.isLogado()) {
 			menuPrincipal(clienteLogado,garagem,sc);
@@ -37,7 +37,7 @@ public class Menus {
 		
 		do {
 		System.out.println("Seja bem vindo a Locadora de Carros!");
-		System.out.println("Digite a opção que deseja: \n \n[1] - Ver carros disponiveis \n[2] - Alugar Carro \n[3] - Devolver Carro");
+		System.out.println("Digite a opção que deseja: \n \n[1] - Ver carros disponiveis \n[2] - Alugar Carro \n[3] - Devolver Carro \n[4] - Alterar senha");
 		escolha = sc.nextInt();
 		
 		switch(escolha) {
@@ -49,6 +49,9 @@ public class Menus {
 			break;
 		case 3:
 			garagem.devolverCarro(clienteLogado);
+			break;
+		case 4:
+			clienteLogado.alterarSenha();
 			break;
 		default:
 			break;

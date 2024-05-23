@@ -1,6 +1,6 @@
 package locadoraJava;
 
-public class Carro {
+public class Carro extends Aluguel{
 	private String marca;
 	private String modelo;
 	private String ano;
@@ -9,9 +9,8 @@ public class Carro {
 	private String tipoCombustivel;
 	private boolean disponivel;
 	
-	public Carro() {}
-	
-	public Carro(String marca, String modelo, String ano, String cor, double quantCombustivel, String tipoCombustivel, boolean disponivel) {
+	public Carro(String marca, String modelo, String ano, String cor, double quantCombustivel, String tipoCombustivel, boolean disponivel, double diaria) {
+		super (diaria);
 		this.marca = marca;
 		this.modelo = modelo;
 		this.ano = ano;
@@ -81,6 +80,5 @@ public class Carro {
 	public void setDisponivel(boolean disponivel) {
 		this.disponivel = disponivel;
 	}
-	
 	
 }
