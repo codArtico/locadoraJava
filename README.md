@@ -8,4 +8,4 @@ Projeto para apresentação na faculdade. Sistema básico de aluguel de carros
 
 ## 📚 Documentação do Código
 
-* **Relatorio de Código** - [NowCar - Google Docs](https://github.com/codArtico)
+* **Relatorio de Código** - [NowCar - Google Docs](https://bit.ly/documentationNowCar)
