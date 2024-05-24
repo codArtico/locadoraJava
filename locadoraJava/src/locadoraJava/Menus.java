@@ -83,8 +83,8 @@ public class Menus {
 	}
 	
 	private static Cliente[] cadastrarUsuario(Cliente[] vetorClientes, int contClientes) {
-			System.out.println("");
 			if(contClientes<vetorClientes.length) {
+				sc.nextLine();
 				System.out.print("Digite seu Nome: ");
 				String nome = sc.nextLine();
 				

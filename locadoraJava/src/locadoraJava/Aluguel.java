@@ -36,7 +36,6 @@ public abstract class Aluguel {
 		this.diaria = diaria;
 	}
 
-
 	private static Scanner sc = new Scanner(System.in);
 	
 	public static Data coletarData() {
