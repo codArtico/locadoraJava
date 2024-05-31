@@ -1,5 +1,10 @@
 package locadoraJava;
 
+import entities.Carro;
+import entities.Cliente;
+import entities.Garagem;
+import util.Menus;
+
 public class Aplicacao extends Menus{
 	
 	public static final int quantCarros = 10;
