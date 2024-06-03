@@ -78,6 +78,19 @@ public class Garagem implements RegistrarAlugueis{
 	    }
 
 	}
+	
+	 public void alugarCarro(Cliente cliente, int indice) {
+	        if (indice >= 0 && indice < carros.length && carros[indice].isDisponivel() && !cliente.isPossuiAluguel()) {
+	            Carro carro = carros[indice];
+	            carro.setDisponivel(false);
+	            cliente.setCarroAlugado(carro);
+	            cliente.setPossuiAluguel(true);
+	            carro.setDataIni(Carro.coletarData());
+	            System.out.println("Carro alugado com sucesso para " + cliente.getNome() + "\n");
+	        } else {
+	            System.out.println("Índice inválido ou carro indisponível.\n");
+	        }
+	    }
 		
 	@Override
 	public void devolverCarro(Cliente cliente) {
@@ -103,6 +116,7 @@ public class Garagem implements RegistrarAlugueis{
 		
 		while(i<carros.length) {
 			if (carros[i].isDisponivel()) {
+				System.out.print("["+i+"] - ");
 			carros[i].mostrarDados();
 			}
 			i++;

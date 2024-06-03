@@ -128,7 +128,7 @@ public class Cliente implements Login {
 		for (int i = 0; i<contClientes; i++) {
 			if (email.equals(vetorClientes[i].getEmail())) {
 				encontrado = true;
-				System.out.print("Digite sua senha");
+				System.out.print("Digite sua senha: ");
 				String senha = sc.nextLine();
 				if (senha.equals(vetorClientes[i].getSenha())) {
 					vetorClientes[i].setLogado(true);

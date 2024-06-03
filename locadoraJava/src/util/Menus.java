@@ -66,8 +66,23 @@ public class Menus {
 		case 1:
 			garagem.mostrarCarros();
 			break;
-		case 2:
-			garagem.alugarCarro(clienteLogado, sc);
+		case 2: 
+			System.out.println("");
+			int tipoAluguel;
+			do {
+				System.out.println("1 - Alugar por Índice / 2 - Alugar por Modelo e Marca");
+				tipoAluguel = sc.nextInt();
+				if(tipoAluguel == 1) {
+					System.out.print("Informe o indice do carro: ");
+					int indiceCarro = sc.nextInt();
+					System.out.println("");
+					garagem.alugarCarro(clienteLogado, indiceCarro);
+				}
+				else if (tipoAluguel == 2) {
+					System.out.println("");
+					garagem.alugarCarro(clienteLogado, sc);
+				}
+			} while(tipoAluguel != 1 && tipoAluguel !=2);
 			break;
 		case 3:
 			garagem.devolverCarro(clienteLogado);
