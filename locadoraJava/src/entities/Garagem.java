@@ -35,6 +35,7 @@ public class Garagem implements RegistrarAlugueis{
 	
 	@Override
 	public void alugarCarro(Cliente cliente, Scanner sc) {
+		sc.nextLine();
 		System.out.println("Carros disponíveis para aluguel:");
 	    mostrarCarros();
 

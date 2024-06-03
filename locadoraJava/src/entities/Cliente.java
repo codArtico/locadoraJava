@@ -151,12 +151,12 @@ public class Cliente implements Login {
 		if (this.senha.equals(senha)) {
 			System.out.println("Digite a nova senha: ");
 			String nova = sc.nextLine();
-			if(nova!=senha) {
-				setSenha(nova);
-			}
-			else {
+			while(this.senha.equals(nova)) {
 				System.out.println("Sua nova senha não pode ser igual a antiga!");
+				System.out.println("Digite a nova senha: ");
+				nova = sc.nextLine();
 			}
+			setSenha(nova);
 			System.out.println("");
 		}
 		else {
