@@ -61,7 +61,7 @@ public abstract class Aluguel {
 	}
 	
 	public double calcularAluguel() {
-		double valorAluguel = calcularDias() * diaria;
+		double valorAluguel = diaria + (calcularDias() * diaria);
 		return valorAluguel;
 	}
 

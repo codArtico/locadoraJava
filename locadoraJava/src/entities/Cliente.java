@@ -171,7 +171,9 @@ public class Cliente implements Login {
 		System.out.println("Carro alugado: " + carroAlugado.getMarca() + " " + carroAlugado.getModelo() + " " + carroAlugado.getAno());
 		System.out.println("Data da retirada: " + carroAlugado.getDataIni());
 		System.out.println("Data da devolução: " + carroAlugado.getDataFim());
-		System.out.println("Valor da diaria: " + carroAlugado.getDiaria() + "\n");
+		System.out.println("Taxa fixa: " + carroAlugado.getDiaria());
+		System.out.println("Valor da diaria: " + carroAlugado.getDiaria());
+		System.out.println("Total de dias com o carro após o dia do aluguel: " + carroAlugado.calcularDias() + "\n");
 		System.out.println("Valor total da fatura: " + carroAlugado.calcularAluguel() + "\n");
 		System.out.println("Volte sempre! \n");
 	}

@@ -5,8 +5,8 @@ import java.util.Scanner;
 import entities.Cliente;
 import entities.Garagem;
 
-public class Menus {
-	
+public class Menus{
+		
 	public static Scanner sc = new Scanner (System.in);
 	
 	public static void telaInicial() {
@@ -42,7 +42,7 @@ public class Menus {
 			Cliente clienteLogado = Cliente.logar(vetorClientes,contClientes);
 			if(clienteLogado != null) {
 				while(clienteLogado.isLogado()) {
-			menuPrincipal(clienteLogado,garagem);
+					menuPrincipal(clienteLogado,garagem);
 				}
 			}
 			break;
