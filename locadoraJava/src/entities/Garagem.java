@@ -33,8 +33,7 @@ public class Garagem implements RegistrarAlugueis{
 		
 	}
 	
-	@Override
-	public void alugarCarro(Cliente cliente, Scanner sc) {
+	public Carro buscarMarcaModelo(Scanner sc) {
 		sc.nextLine();
 		System.out.println("Carros disponíveis para aluguel:");
 	    mostrarCarros();
@@ -52,35 +51,46 @@ public class Garagem implements RegistrarAlugueis{
 	    	}
 	    }
 	    if (marcaExiste) {
-	    System.out.print("Digite o modelo do carro desejado:");
-	    String modelo = sc.nextLine();
+		    System.out.print("Digite o modelo do carro desejado:");
+		    String modelo = sc.nextLine();
+		    for (Carro carro : carros) {
+		        if (carro.isDisponivel() && carro.getMarca().equalsIgnoreCase(marca) && carro.getModelo().equalsIgnoreCase(modelo)) {
+		            carro.setDisponivel(false);
+		            return carro;
+		        }
+		    }
+		    System.out.println("Modelo não encontrado");
+	        return null;
+	    }
+	    System.out.println("Marca não encontrada");
+	    return null;
+	}
 
-	    
-	    boolean carroEncontrado = false;
-	    for (Carro carro : carros) {
-	        if (carro.isDisponivel() && carro.getMarca().equalsIgnoreCase(marca) && carro.getModelo().equalsIgnoreCase(modelo) && !cliente.isPossuiAluguel()) {
-	            carro.setDisponivel(false);
-	            carroEncontrado = true;
-	            cliente.setCarroAlugado(carro);
+	@Override
+	public void alugarCarro(Cliente cliente, Scanner sc) {
+		
+		if(cliente.isPossuiAluguel()) {
+			System.out.println("Você já possui um aluguel! \n");
+		}
+		
+		else {
+			Carro carro = buscarMarcaModelo(sc);
+			
+			if (carro!=null) {
+			    cliente.setCarroAlugado(carro);
 	            cliente.setPossuiAluguel(true);
 	            carro.setDataIni(Carro.coletarData());
 	            System.out.println("Carro alugado com sucesso para  " + cliente.getNome() + "\n");
-	        }
-	    }
-
-	    if (!carroEncontrado) {
-	        System.out.println("Modelo não disponível na garagem. \n");
-	    }
-	    
-	    }
-	    
-	    else {
-	    	System.out.println("Não temos carros disponiveis dessa marca! \n");
-	    }
-
+			}           
+		}
 	}
 	
-	 public void alugarCarro(Cliente cliente, int indice) {
+	public void alugarCarro(Cliente cliente, int indice) {
+		 
+		 if(cliente.isPossuiAluguel()) {
+				System.out.println("Você já possui um aluguel! \n");
+		}
+		 else {
 	        if (indice >= 0 && indice < carros.length && carros[indice].isDisponivel() && !cliente.isPossuiAluguel()) {
 	            Carro carro = carros[indice];
 	            carro.setDisponivel(false);
@@ -88,11 +98,15 @@ public class Garagem implements RegistrarAlugueis{
 	            cliente.setPossuiAluguel(true);
 	            carro.setDataIni(Carro.coletarData());
 	            System.out.println("Carro alugado com sucesso para " + cliente.getNome() + "\n");
-	        } else {
-	            System.out.println("Índice inválido ou carro indisponível.\n");
+	        } else if (indice<0 || indice>9){
+	            System.out.println("Índice inválido.\n");
 	        }
+	        else {
+	        	System.out.println("Carro indisponível. \n");
+	        }
+		 }
 	    }
-		
+
 	@Override
 	public void devolverCarro(Cliente cliente) {
 		if (cliente.isPossuiAluguel()) {
@@ -108,6 +122,9 @@ public class Garagem implements RegistrarAlugueis{
 		cliente.setCarroAlugado(null);
 		cliente.setPossuiAluguel(false);
 
+		}
+		else {
+			System.out.println("Você não possui um carro alugado. \n");
 		}
  }
 	

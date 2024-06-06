@@ -58,7 +58,7 @@ public class Menus{
 		
 		do {
 		System.out.println("Seja bem vindo " + clienteLogado.getNome() +", a nossa Locadora de Carros!");
-		System.out.println("\n \n[1] - Ver carros disponiveis \n[2] - Alugar Carro \n[3] - Devolver Carro \n[4] - Alterar senha \n[5] - Mostrar dados do usuário");
+		System.out.println("\n \n[1] - Ver carros disponiveis \n[2] - Alugar Carro \n[3] - Devolver Carro \n[4] - Alterar senha \n[5] - Mostrar dados do usuário \n[6] - Mostrar carro Alugado");
 		System.out.print("Digite a opção que deseja: ");
 		escolha = sc.nextInt();
 		
@@ -92,11 +92,15 @@ public class Menus{
 			break;
 		case 5:
 			clienteLogado.mostrarDados();
+			break;
+		case 6:
+			clienteLogado.mostrarCarroAlugado();
+			break;
 		default:
 			break;
 		}
 		
-		} while(escolha>0 && escolha<6);
+		} while(escolha>0 && escolha<7);
 		clienteLogado.deslogar();
 	}
 	

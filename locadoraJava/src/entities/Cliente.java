@@ -97,6 +97,15 @@ public class Cliente implements Login {
 				+ possuiCarro + "\n" + "Email: " + email + "\n" + "Senha: " + senhaEsc + "\n");
 	}
 	
+	public void mostrarCarroAlugado() {
+		if(isPossuiAluguel()) {
+		carroAlugado.mostrarDados();
+		}
+		else {
+			System.out.println("Você não possui um carro alugado");
+		}
+	}
+	
 	public String getEmail() {
 		return email;
 	}
