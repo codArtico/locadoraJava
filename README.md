@@ -12,10 +12,10 @@ Projeto para apresentação na faculdade. Sistema básico de aluguel de carros
 
 ## 🤔Como importar o código para o Eclipse
 
-* **- Clone ou baixe a pasta locadoraJava que está dentro da primeira pasta** 
-* **- Abra o Eclipse** 
-* **- Na barra superior, vá em File->Open Projects from File System**
-* **- Em seguida, clique em Directory e navegue até a pasta do projeto**
-* **- Clone ou baixe a pasta locadoraJava que está dentro da primeira pasta** 
-* **- Após selecioná-lo, clique em Selecionar pasta**
-* **- Marque a opção "Add projects to Working Sets" e clique em Finish**  
+* **Clone ou baixe a pasta locadoraJava que está dentro da primeira pasta** 
+* **Abra o Eclipse** 
+* **Na barra superior, vá em File->Open Projects from File System**
+* **Em seguida, clique em Directory e navegue até a pasta do projeto**
+* **Clone ou baixe a pasta locadoraJava que está dentro da primeira pasta** 
+* **Após selecioná-lo, clique em Selecionar pasta**
+* **Marque a opção "Add projects to Working Sets" e clique em Finish**  
