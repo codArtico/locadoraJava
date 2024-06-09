@@ -9,6 +9,22 @@ public class Menus{
 		
 	public static Scanner sc = new Scanner (System.in);
 	
+	public static void info() {
+		System.out.println("\n\n\n");
+		telaInicial();
+		
+		System.out.println("• NowCar - Solução imediata para um passeio sem complicações • \n");
+		System.out.println("Como funciona nossos contratos?");
+		System.out.println("Prezamos sempre pela transparência de nossos serviços, e por isso, disponibilizamos abertamente o nosso contrato: ");
+		System.out.println("Taxa 1 - Taxa Fixa: Essa taxa é referente ao dia que você contratou o aluguel do seu carro. Corresponde ao valor de uma diaria");
+		System.out.println("Taxa 2 - Taxa Variável(Diaria): Essa taxa é referente ao total de dias após o aluguel do seu carro.");
+		System.out.println("Taxa 3 - Taxa de Atraso: Essa taxa é corresponde aos dias passados após a data informada para a devolução. Corresponde ao triplo da diaria/dia");
+		System.out.println("\nAo usar os serviços NowCar, você concorda que leu e está ciente deste contrato e das respectivas taxas, além de taxas extras como combustível, danos aos veículos e etc.");
+		System.out.println("Pressione Enter para continuar");
+		sc.nextLine();
+		sc.nextLine();
+	}
+	
 	public static void telaInicial() {
 		
 		System.out.println(".-----------------. .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  ");
@@ -58,7 +74,7 @@ public class Menus{
 		
 		do {
 		System.out.println("Seja bem vindo " + clienteLogado.getNome() +", a nossa Locadora de Carros!");
-		System.out.println("\n \n[1] - Ver carros disponiveis \n[2] - Alugar Carro \n[3] - Devolver Carro \n[4] - Alterar senha \n[5] - Mostrar dados do usuário \n[6] - Mostrar carro Alugado");
+		System.out.println("\n \n[1] - Ver carros disponiveis \n[2] - Alugar Carro \n[3] - Devolver Carro \n[4] - Alterar senha \n[5] - Mostrar dados do usuário \n[6] - Mostrar carro Alugado \n[7] - Termos de uso");
 		System.out.print("Digite a opção que deseja: ");
 		escolha = sc.nextInt();
 		
@@ -96,11 +112,14 @@ public class Menus{
 		case 6:
 			clienteLogado.mostrarCarroAlugado();
 			break;
+		case 7:
+			info();
+			break;
 		default:
 			break;
 		}
 		
-		} while(escolha>0 && escolha<7);
+		} while(escolha>0 && escolha<8);
 		clienteLogado.deslogar();
 	}
 	
@@ -113,20 +132,48 @@ public class Menus{
 				System.out.print("Digite seu CPF: ");
 				String cpf = sc.nextLine();
 				
-				System.out.print("Digite seu Endereço: ");
-				String end = sc.nextLine();
+				boolean erro = false;
 				
-				System.out.print("Digite seu Telefone: ");
-				String tel = sc.nextLine();
-				
-				System.out.print("Digite seu Email: ");
-				String email = sc.nextLine();
-				
-				System.out.print("Digite seu Senha: ");
-				String senha = sc.nextLine();
-				
-				vetorClientes [contClientes] = new Cliente (nome,cpf,end,tel,email,senha);
-			}
+				for (int i = 0; i<=contClientes; i++) {
+					if(vetorClientes[i]!=null) {
+						if (cpf.equals(vetorClientes[i].getCpf())) {
+							erro = true;
+						}
+					}
+				}
+					if (erro) {
+						System.out.println("CPF já existente!");
+					}
+					else {
+						System.out.print("Digite seu Endereço: ");
+						String end = sc.nextLine();
+						
+						System.out.print("Digite seu Telefone: ");
+						String tel = sc.nextLine();
+						
+						System.out.print("Digite seu Email: ");
+						String email = sc.nextLine();
+						
+						for (int j = 0; j<=contClientes; j++) {
+							if(vetorClientes[j]!=null) {
+								if (email.equals(vetorClientes[j].getEmail())) {
+									erro = true;
+								}
+							}
+						}
+							
+							if (erro) {
+								System.out.println("Email já existente!");
+							}
+							
+							else {
+								System.out.print("Digite seu Senha: ");
+								String senha = sc.nextLine();
+								vetorClientes [contClientes] = new Cliente (nome,cpf,end,tel,email,senha);
+								System.out.println("Usuário cadastrado com sucesso!");
+							}
+						}
+					}
 			else {
 				System.out.println("Nosso sistema de clientes está lotado!");
 			}

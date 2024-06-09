@@ -7,6 +7,7 @@ import java.time.temporal.ChronoUnit;
 
 public abstract class Aluguel {
 	protected Data dataIni;
+	protected Data dataDev;
 	protected Data dataFim;
 	protected double diaria;
 	
@@ -15,6 +16,16 @@ public abstract class Aluguel {
 	}
 	
 	
+	public Data getDataDev() {
+		return dataDev;
+	}
+
+
+	public void setDataDev(Data dataDev) {
+		this.dataDev = dataDev;
+	}
+
+
 	public Data getDataIni() {
 		return dataIni;
 	}
@@ -60,8 +71,25 @@ public abstract class Aluguel {
 		return diferencaEmDias;
 	}
 	
+	public long calcularDiasAtraso () {
+		long diferencaEmDias = Math.abs(ChronoUnit.DAYS.between(dataFim.getData(), dataDev.getData()));
+		return diferencaEmDias;
+	}
+	
+	public double calcularTaxaAtraso() {
+		long diasAtraso = calcularDiasAtraso();
+		double taxaAtraso = 0;
+		
+		if (diasAtraso>0) {
+			taxaAtraso = (diasAtraso*(diaria*3));
+		}
+		
+		return taxaAtraso;
+	}
+	
 	public double calcularAluguel() {
-		double valorAluguel = diaria + (calcularDias() * diaria);
+		
+		double valorAluguel = (diaria + (calcularDias() * diaria)+calcularTaxaAtraso());
 		return valorAluguel;
 	}
 

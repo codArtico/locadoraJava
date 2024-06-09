@@ -174,6 +174,8 @@ public class Cliente implements Login {
 	}
 	
 	public void gerarFatura() {
+		
+		
 		System.out.println(" \n\n• NowCar - Solução imediata para um passeio sem complicações • \n");
 		System.out.println("Fatura:");
 		System.out.println("Nome do Cliente: " + nome);
@@ -182,6 +184,7 @@ public class Cliente implements Login {
 		System.out.println("Data da devolução: " + carroAlugado.getDataFim());
 		System.out.println("Taxa fixa: " + carroAlugado.getDiaria());
 		System.out.println("Valor da diaria: " + carroAlugado.getDiaria());
+		System.out.println("Taxa de atraso: " + carroAlugado.calcularTaxaAtraso());
 		System.out.println("Total de dias com o carro após o dia do aluguel: " + carroAlugado.calcularDias() + "\n");
 		System.out.println("Valor total da fatura: " + carroAlugado.calcularAluguel() + "\n");
 		System.out.println("Volte sempre! \n");

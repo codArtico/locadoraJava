@@ -96,7 +96,10 @@ public class Garagem implements RegistrarAlugueis{
 	            carro.setDisponivel(false);
 	            cliente.setCarroAlugado(carro);
 	            cliente.setPossuiAluguel(true);
+	            System.out.println("• Data de retirada");
 	            carro.setDataIni(Carro.coletarData());
+	            System.out.println("• Data prevista pra devolução");
+	            carro.setDataDev(Carro.coletarData());
 	            System.out.println("Carro alugado com sucesso para " + cliente.getNome() + "\n");
 	        } else if (indice<0 || indice>9){
 	            System.out.println("Índice inválido.\n");
