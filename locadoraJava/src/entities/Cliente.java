@@ -181,6 +181,7 @@ public class Cliente implements Login {
 		System.out.println("Nome do Cliente: " + nome);
 		System.out.println("Carro alugado: " + carroAlugado.getMarca() + " " + carroAlugado.getModelo() + " " + carroAlugado.getAno());
 		System.out.println("Data da retirada: " + carroAlugado.getDataIni());
+		System.out.println("Data prevista para devolução: " + carroAlugado.getDataDev());
 		System.out.println("Data da devolução: " + carroAlugado.getDataFim());
 		System.out.println("Taxa fixa: " + carroAlugado.getDiaria());
 		System.out.println("Valor da diaria: " + carroAlugado.getDiaria());
