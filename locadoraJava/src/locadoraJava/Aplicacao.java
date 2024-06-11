@@ -9,9 +9,9 @@ public class Aplicacao extends Menus{
 	
 	public static final int quantCarros = 10;
 			
-	public static final Cliente[] vetorClientes = new Cliente[20];
+	public static final Cliente[] vetorClientes = new Cliente[9];
 	
-	public static int contClientes;
+	public static int contClientes = 0;
 	
 	public static void main(String[] args) {
 		Carro [] vetorCarros = new Carro[quantCarros];

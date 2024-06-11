@@ -52,7 +52,11 @@ public class Menus{
 		switch (opcao) {
 		case 1:
 			vetorClientes = cadastrarUsuario(vetorClientes, contClientes);
-			contClientes++;
+			if(contClientes<vetorClientes.length) {
+				if(vetorClientes[contClientes]!=null) {
+					contClientes++;
+				}
+			}
 			break;
 		case 2:
 			Cliente clienteLogado = Cliente.logar(vetorClientes,contClientes);
